@@ -4,7 +4,7 @@ import os
 
 # ================= Configuration - Change these for your region =================
 COUNTRY_CODE = 'ES-ES'  # Examples: 'GB' (UK), 'CA' (Canada), 'DE' (Germany), 'IT' (Italy)
-LANGUAGE_CODE = 'es' # Language for the API response
+LANGUAGE_CODE = 'es-es' # Language for the API response
 GITHUB_USERNAME = "wuniversales" # Forkers must change this to their username
 REPO_NAME = "lg-playlist-generator"
 # ================================================================================
