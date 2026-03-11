@@ -27,6 +27,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add *.m3u *.xml
+          git add lg_channels_es.m3u lg_channels_es.xml
           git commit -m "Update channels and EPG" || exit 0
           git push
