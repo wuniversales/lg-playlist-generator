@@ -1,35 +1,32 @@
-name: Update LG Playlist
+name: Update LG Channels
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+    - cron: '0 */6 * * *' # Runs every 6 hours
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.x'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Run LG Generator
-        run: python lg_gen.py
+      - name: Run generator
+        run: python main.py
 
-      - name: Deploy to Repo
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add lg_channels_us.m3u lg_channels_us.xml
-          git commit -m "Update LG US Playlist and EPG" || exit 0
+          git add *.m3u *.xml
+          git commit -m "Update channels and EPG" || exit 0
           git push
